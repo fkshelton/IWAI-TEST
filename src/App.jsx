@@ -353,7 +353,7 @@ function App() {
           </div>
           <div className="border-t border-gray-600 mt-8 pt-8 text-center">
             <p className="text-gray-400">
-              &copy; 2024 Summit Fence Co. All rights reserved.
+              &copy; 2025 Summit Fence Co. All rights reserved.
             </p>
           </div>
         </div>
