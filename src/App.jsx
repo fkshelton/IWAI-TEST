@@ -43,13 +43,31 @@ function App() {
     }
   ]
 
-  const galleryImages = [
-    'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&h=600&fit=crop',
-    'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&h=600&fit=crop',
-    'https://images.unsplash.com/photo-1600607687644-c7171b42498b?w=800&h=600&fit=crop',
-    'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=800&h=600&fit=crop',
-    'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&h=600&fit=crop',
-    'https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=800&h=600&fit=crop'
+  const testimonials = [
+    {
+      name: 'Sarah Johnson',
+      location: 'Cherry Creek',
+      rating: 5,
+      text: 'Summit Fence Co did an amazing job on our privacy fence. Professional, on time, and the quality is outstanding. Highly recommend!'
+    },
+    {
+      name: 'Mike Torres',
+      location: 'Highlands Ranch',
+      rating: 5,
+      text: 'Best fencing company in Denver! They helped us choose the perfect vinyl fence and the installation was flawless. Great team!'
+    },
+    {
+      name: 'Jennifer Walsh',
+      location: 'Lakewood',
+      rating: 5,
+      text: 'Very impressed with their work. The ornamental iron fence looks beautiful and the crew was respectful and clean. Worth every penny.'
+    }
+  ]
+
+  const stats = [
+    { number: '500+', label: 'Projects Completed' },
+    { number: '15', label: 'Years Experience' },
+    { number: '100%', label: 'Satisfaction Rate' }
   ]
 
   const whyChooseUs = [
@@ -156,29 +174,47 @@ function App() {
         </div>
       </section>
 
-      {/* Photo Gallery Section */}
-      <section id="gallery" className="py-16 sm:py-20 bg-white">
+      {/* Stats Section */}
+      <section className="py-12 sm:py-16 bg-navy">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+            {stats.map((stat, index) => (
+              <div key={index} className="text-white">
+                <div className="text-4xl sm:text-5xl font-bold mb-2">{stat.number}</div>
+                <div className="text-lg text-blue-200">{stat.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section id="testimonials" className="py-16 sm:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl sm:text-4xl font-bold text-navy-dark mb-4">
-              Our Work
+              What Our Customers Say
             </h2>
             <p className="text-lg text-gray-600">
-              See the quality and craftsmanship we bring to every project
+              Don't just take our word for it - hear from our satisfied customers
             </p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {galleryImages.map((image, index) => (
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {testimonials.map((testimonial, index) => (
               <div
                 key={index}
-                className="relative overflow-hidden rounded-lg shadow-md hover:shadow-xl transition duration-300 aspect-video bg-gray-200"
+                className="bg-blue-50 rounded-lg p-8 shadow-md hover:shadow-xl transition duration-300"
               >
-                <img
-                  src={image}
-                  alt={`Fence project ${index + 1}`}
-                  className="w-full h-full object-cover hover:scale-110 transition duration-300"
-                  loading="lazy"
-                />
+                <div className="flex mb-4">
+                  {[...Array(testimonial.rating)].map((_, i) => (
+                    <span key={i} className="text-yellow-400 text-xl">★</span>
+                  ))}
+                </div>
+                <p className="text-gray-700 mb-6 italic">"{testimonial.text}"</p>
+                <div className="border-t border-gray-300 pt-4">
+                  <p className="font-semibold text-navy-dark">{testimonial.name}</p>
+                  <p className="text-sm text-gray-600">{testimonial.location}</p>
+                </div>
               </div>
             ))}
           </div>
